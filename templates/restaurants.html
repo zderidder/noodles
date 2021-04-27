@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<title>Restaurants</title>
 		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
-		<link rel="stylesheet" href="css/style.css"/>
-		<link rel="stylesheet" href="css/restaurant_style.css"/>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}"/>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'restaurant_style.css')}}"/>
 
 	</head>
 	<body>
@@ -17,12 +17,11 @@
 		</div>
 
 		<div id="navbar">
-			<a class="navbar_link" style="margin-left:0px;" href="index.html">Home</a>
-			<a class="navbar_link" id="current_link" href="restaurants.html">Restaurants</a>
-			<a class="navbar_link" href="homemade.html">Homemade</a>
-			<a class="navbar_link" href="history.html">History</a>
-			<a class="navbar_link" href="about.html">About</a>
-			
+			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
+			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
+			<a class="navbar_link" href="{{url_for('recipes')}}">Homemade</a>
+			<a class="navbar_link" href="{{url_for('history')}}">History</a>
+			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
 		</div>
 
 		<div id="page_welcome">
