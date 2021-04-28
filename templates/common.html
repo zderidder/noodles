@@ -5,6 +5,7 @@
 		<title>NoodlEau Claire</title>
 		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}"/>
+		{% block css %}{% endblock %}
     </head>
     <body>
 
@@ -13,7 +14,7 @@
 		</div>
 
 		<div id="navbar">
-			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
+			<a class="navbar_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
 			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
 			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
 			<a class="navbar_link" href="{{url_for('history')}}">History</a>

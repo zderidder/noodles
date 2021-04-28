@@ -1,100 +1,60 @@
-<!doctype html>
-<html lang="en">
-	<head>
+{% extends "common.html" %}
 
-		<meta charset="UTF-8">
-		<title>Fried Noodle Dishes</title>
-		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'recipe_style.css')}}"/>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'recipe_style.css')}}"/>
+{% endblock %}
 
-	</head>
-	<body>
-
-		<div id="header">
-			<h1 id="welcome">NoodlEau-Claire: All you need to know about noodles in Eau Claire!</h1>
+{% block body %}
+<div id="content">
+	<h1 class="top_text">Fried Noodle Dishes</h1>
+	<div class="topic">
+		<h2>Pad Thai Gai</h2>
+		<p>Pad Thai Gai is a Thai dish that includes Thai rice noodles that are stir fried with chicken.</p>
+	</div>
+	<div class="recipe_container">
+		<h2 class="recipe_header">Pad Thai Gai</h2>
+		<div class="recipe_block">
+			<h2>Notes:</h2>
+			<p>You can find the recipe <a href="https://www.thespruceeats.com/stir-fried-noodles-with-chicken-pad-thai-3217108" target="_blank">here</a>.</p>
+			<p><b>This recipe reccomends nuts, which can be excluded.</b></p>
 		</div>
-
-		<div id="navbar">
-			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
-			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
-			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
-			<a class="navbar_link" href="{{url_for('history')}}">History</a>
-			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
+		<div class="recipe_block">
+			<h2>Information:</h2>
+			<p>This is a simple recipe for making a quick pasta. It takes a total of <b>30 minutes</b> to make, and it gives <b>4 servings</b>.</p>
+			<p>As long as you keep an eye on the noodles (as they will likely cook faster), you could easily cut the recipe into quarters to make a personal dish.</p>
 		</div>
-
-		<div id="page_welcome">
-			<img id="page_welcome_image" src="https://cdn.ucdintegrativemedicine.com/uploads/GarlicTomatoSpaghetti_wp-header.jpg" alt="A bowl of spaghetti on a wooden table.">
-			<div id="page_welcome_text">
-				<h1 id="page_welcome_header">NoodlEau-Claire</h1>
-				<h2 id="page_welcome_subheader">Eau-Claire's noodles</h2>
-			</div>
+		<div class="recipe_block">
+			<h2>Key Ingredients:</h2>
+			<p><b>8</b> ounces Thai rice noodles</p>
+			<p><b>1/2</b> pound chicken breast</p>
+			<p>various vegetables, eggs, and herbs</p>
+			<p>various sauces for stir fry sauce</p>
 		</div>
-
-		<div id="content">
-			<h1 class="top_text">Fried Noodle Dishes</h1>
-			<div class="topic">
-				<h2>Pad Thai Gai</h2>
-				<p>Pad Thai Gai is a Thai dish that includes Thai rice noodles that are stir fried with chicken.</p>
-			</div>
-			<div class="recipe_container">
-				<h2 class="recipe_header">Pad Thai Gai</h2>
-				<div class="recipe_block">
-					<h2>Notes:</h2>
-					<p>You can find the recipe <a href="https://www.thespruceeats.com/stir-fried-noodles-with-chicken-pad-thai-3217108" target="_blank">here</a>.</p>
-					<p><b>This recipe reccomends nuts, which can be excluded.</b></p>
-				</div>
-				<div class="recipe_block">
-					<h2>Information:</h2>
-					<p>This is a simple recipe for making a quick pasta. It takes a total of <b>30 minutes</b> to make, and it gives <b>4 servings</b>.</p>
-					<p>As long as you keep an eye on the noodles (as they will likely cook faster), you could easily cut the recipe into quarters to make a personal dish.</p>
-				</div>
-				<div class="recipe_block">
-					<h2>Key Ingredients:</h2>
-					<p><b>8</b> ounces Thai rice noodles</p>
-					<p><b>1/2</b> pound chicken breast</p>
-					<p>various vegetables, eggs, and herbs</p>
-					<p>various sauces for stir fry sauce</p>
-				</div>
-			</div>
-			<div class="topic">
-				<h2>Shanghai Fried Noodles</h2>
-				<p>Shanghai Cu Chao Mian, known as Shanghai fried noodles in the United States, is a popular chinese fried noodle dish with pork.</p>
-			</div>
-			<div class="recipe_container">
-				<h2 class="recipe_header">Shanghai Fried Noodles</h2>
-				<div class="recipe_block">
-					<h2>Notes:</h2>
-					<p>You can find the recipe <a href="https://thewoksoflife.com/shanghai-fried-noodles/" target="_blank">here</a>.</p>
-					<p>This is a very quick recipe!</p>
-				</div>
-				<div class="recipe_block">
-					<h2>Information:</h2>
-					<p>This is a simple recipe with a relatively straightforward set of instructions, but they do include options for vegetarians. It takes a total of <b>20 minutes</b> to make, and it gives <b>4 servings</b>.</p>
-					<p>Although it doesn't state it, you could easily replace the pork with a vegetarian protien and follow similar steps.</p>
-				</div>
-				<div class="recipe_block">
-					<h2>Key Ingredients:</h2>
-					<p><b>12</b> lean pork</p>
-					<p><b>8</b> shiitake mushrooms</p>
-					<p><b>1</b> pound Udon noodles</p>
-					<p>various sauces and additions</p>
-				</div>
-			</div>
+	</div>
+	<div class="topic">
+		<h2>Shanghai Fried Noodles</h2>
+		<p>Shanghai Cu Chao Mian, known as Shanghai fried noodles in the United States, is a popular chinese fried noodle dish with pork.</p>
+	</div>
+	<div class="recipe_container">
+		<h2 class="recipe_header">Shanghai Fried Noodles</h2>
+		<div class="recipe_block">
+			<h2>Notes:</h2>
+			<p>You can find the recipe <a href="https://thewoksoflife.com/shanghai-fried-noodles/" target="_blank">here</a>.</p>
+			<p>This is a very quick recipe!</p>
 		</div>
-
-		<div id="footer">
-			<p>A website made by Connor and Zach for a CS 268 Project</p>
-			<p id="validated">
-				<a href="http://jigsaw.w3.org/css-validator/check/referer">
-				<img style="border:0;width:88px;height:31px"
-				src="http://jigsaw.w3.org/css-validator/images/vcss"
-				alt="Valid CSS!" />
-				</a>
-			</p>
+		<div class="recipe_block">
+			<h2>Information:</h2>
+			<p>This is a simple recipe with a relatively straightforward set of instructions, but they do include options for vegetarians. It takes a total of <b>20 minutes</b> to make, and it gives <b>4 servings</b>.</p>
+			<p>Although it doesn't state it, you could easily replace the pork with a vegetarian protien and follow similar steps.</p>
 		</div>
+		<div class="recipe_block">
+			<h2>Key Ingredients:</h2>
+			<p><b>12</b> lean pork</p>
+			<p><b>8</b> shiitake mushrooms</p>
+			<p><b>1</b> pound Udon noodles</p>
+			<p>various sauces and additions</p>
+		</div>
+	</div>
+</div>
 
-	</body>
-</html>
-
-
+{% endblock %}

@@ -1,105 +1,63 @@
+{% extends "common.html" %}
 
-<!doctype html>
-<html lang="en">
-	<head>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'restaurant_style.css')}}"/>
+{% endblock %}
 
-		<meta charset="UTF-8">
-		<title>Restaurants</title>
-		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'restaurant_style.css')}}"/>
+{% block body %}
+<div id="container">
 
-	</head>
-	<body>
+	<div id="content">
+		<h1>Restaurants that sell noodles in Eau Claire</h1>
+		<p>This page contains popular noodle stops in the city of Eau Claire, Wisconsin.</p>
+		<div class="restaurant_table">
 
-		<div id="header">
-			<h1 id="welcome">NoodlEau-Claire: All you need to know about noodles in Eau Claire!</h1>
-		</div>
-
-		<div id="navbar">
-			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
-			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
-			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
-			<a class="navbar_link" href="{{url_for('history')}}">History</a>
-			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
-		</div>
-
-		<div id="page_welcome">
-			<img id="page_welcome_image" src="https://cdn.ucdintegrativemedicine.com/uploads/GarlicTomatoSpaghetti_wp-header.jpg" alt="A bowl of spaghetti on a wooden table.">
-			<div id="page_welcome_text">
-				<h1 id="page_welcome_header">NoodlEau-Claire</h1>
-				<h2 id="page_welcome_subheader">Eau-Claire's noodles</h2>
-			</div>
-		</div>
-
-		<div id="container">
-
-			<div id="content">
-				<h1>Restaurants that sell noodles in Eau Claire</h1>
-				<p>This page contains popular noodle stops in the city of Eau Claire, Wisconsin.</p>
-				<div class="restaurant_table">
-				
-					<div class="restaurant_container">
-						<a href="https://www.noodlewrap.com/index.html"><h2>Noodlewrap</h2></a>
-						<img src="{{url_for('static', filename = 'noodlewrap.jpg')}}" alt="An image of the Noodle Wrap restaurant.">
-						<p><a href="https://www.google.com/maps/place/3021+Mall+Dr+STE+1,+Eau+Claire,+WI+54701/@44.7882095,-91.4590091,19z/data=!4m5!3m4!1s0x87f8bc6b8e4c9e0f:0x6e664fa6f58536cd!8m2!3d44.7881773!4d-91.4584793">Address: 3021 Mall Dr STE 1, Eau Claire, WI 54701</a></p>
-						<ul>
-							<li>Located in the Oakwood Mall</li>
-							<li>Hmong cuisine</li>
-							<li>4 out of 5 stars</li>
-						</ul>
-					</div>
-					
-					<div class="restaurant_container">
-						<a href="https://eatstreet.com/eauclaire-wi/restaurants/rice-palace"><h2>Rice Palace</h2></a>
-						<img src="{{url_for('static', filename = 'ricepalace.jpg')}}" alt="An image of the Rice Palace restaurant.">
-						<p><a href="https://www.google.com/maps/place/Rice+Palace/@44.8112394,-91.5020974,17z/data=!3m2!4b1!5s0x87f8bd0d16f4bf9b:0xe26754492a6ea7bc!4m5!3m4!1s0x87f8bd0d115a63c7:0x224c4642ed1418ff!8m2!3d44.8112356!4d-91.4999087">Address: 210 S Barstow St, Eau Claire, WI 54701</a></p>
-						<ul>
-							<li>Flexible menu</li>
-							<li>Authentic Thai cuisine</li>
-							<li>4.3 out of 5 stars</li>
-						</ul>
-					</div>
-					
-					
-					<div class="restaurant_container">
-						<a href="https://eatstreet.com/eauclaire-wi/restaurants/noodle-teahouse-2161-eastridge-center-st"><h2>Noodle Teahouse</h2></a>
-						<img src="{{url_for('static', filename = 'noodleteahouse.jpg')}}" alt="An image of the Noodle Teahouse restaurant.">
-						<p><a href="https://www.google.com/maps/place/Noodle+Teahouse/@44.8062674,-91.4711514,17z/data=!3m1!4b1!4m5!3m4!1s0x87f8bcf6fa281c67:0x1a25ca662ccacbfe!8m2!3d44.8062636!4d-91.4689627">Address: 2161 Eastridge Center St, Eau Claire, WI 54701</a></p>
-						<ul>
-							<li>Pho/Vietnamese cuisine</li>
-							<li>3.9 out of 5 stars</li>
-						</ul>
-					</div>
-				
-					<div class="restaurant_container"> 
-						<a href="https://www.quickwokeauclaire.com/"><h2>Quick Wok</h2></a>
-						<img src="{{url_for('static', filename = 'quickwok.jpg')}}" alt="An image of the Quick Wok restaurant.">
-						<p><a href="https://www.google.com/maps/place/Quick+Wok/@44.80193,-91.5121636,17z/data=!3m1!4b1!4m5!3m4!1s0x87f8bd9d6bb20e85:0x3e5ae013d66b8cca!8m2!3d44.8019262!4d-91.5099749">Address: 501 Water St #5632, Eau Claire, WI 54703</a></p>
-						<ul>
-							<li>Located on Water Street</li>
-							<li>Take out, can order online</li>
-							<li>3.5 out of 5 stars</li>
-						</ul>
-					</div>
-					
-				</div>
+			<div class="restaurant_container">
+				<a href="https://www.noodlewrap.com/index.html"><h2>Noodlewrap</h2></a>
+				<img src="{{url_for('static', filename = 'noodlewrap.jpg')}}" alt="An image of the Noodle Wrap restaurant.">
+				<p><a href="https://www.google.com/maps/place/3021+Mall+Dr+STE+1,+Eau+Claire,+WI+54701/@44.7882095,-91.4590091,19z/data=!4m5!3m4!1s0x87f8bc6b8e4c9e0f:0x6e664fa6f58536cd!8m2!3d44.7881773!4d-91.4584793">Address: 3021 Mall Dr STE 1, Eau Claire, WI 54701</a></p>
+				<ul>
+					<li>Located in the Oakwood Mall</li>
+					<li>Hmong cuisine</li>
+					<li>4 out of 5 stars</li>
+				</ul>
 			</div>
 
-			<div id="footer">
-				<p>A website made by Connor and Zach for a CS 268 Project</p>
-				<p id="validated">
-					<a href="http://jigsaw.w3.org/css-validator/check/referer">
-					<img style="border:0;width:88px;height:31px"
-					src="http://jigsaw.w3.org/css-validator/images/vcss"
-					alt="Valid CSS!" />
-					</a>
-				</p>
+			<div class="restaurant_container">
+				<a href="https://eatstreet.com/eauclaire-wi/restaurants/rice-palace"><h2>Rice Palace</h2></a>
+				<img src="{{url_for('static', filename = 'ricepalace.jpg')}}" alt="An image of the Rice Palace restaurant.">
+				<p><a href="https://www.google.com/maps/place/Rice+Palace/@44.8112394,-91.5020974,17z/data=!3m2!4b1!5s0x87f8bd0d16f4bf9b:0xe26754492a6ea7bc!4m5!3m4!1s0x87f8bd0d115a63c7:0x224c4642ed1418ff!8m2!3d44.8112356!4d-91.4999087">Address: 210 S Barstow St, Eau Claire, WI 54701</a></p>
+				<ul>
+					<li>Flexible menu</li>
+					<li>Authentic Thai cuisine</li>
+					<li>4.3 out of 5 stars</li>
+				</ul>
+			</div>
+
+
+			<div class="restaurant_container">
+				<a href="https://eatstreet.com/eauclaire-wi/restaurants/noodle-teahouse-2161-eastridge-center-st"><h2>Noodle Teahouse</h2></a>
+				<img src="{{url_for('static', filename = 'noodleteahouse.jpg')}}" alt="An image of the Noodle Teahouse restaurant.">
+				<p><a href="https://www.google.com/maps/place/Noodle+Teahouse/@44.8062674,-91.4711514,17z/data=!3m1!4b1!4m5!3m4!1s0x87f8bcf6fa281c67:0x1a25ca662ccacbfe!8m2!3d44.8062636!4d-91.4689627">Address: 2161 Eastridge Center St, Eau Claire, WI 54701</a></p>
+				<ul>
+					<li>Pho/Vietnamese cuisine</li>
+					<li>3.9 out of 5 stars</li>
+				</ul>
+			</div>
+
+			<div class="restaurant_container">
+				<a href="https://www.quickwokeauclaire.com/"><h2>Quick Wok</h2></a>
+				<img src="{{url_for('static', filename = 'quickwok.jpg')}}" alt="An image of the Quick Wok restaurant.">
+				<p><a href="https://www.google.com/maps/place/Quick+Wok/@44.80193,-91.5121636,17z/data=!3m1!4b1!4m5!3m4!1s0x87f8bd9d6bb20e85:0x3e5ae013d66b8cca!8m2!3d44.8019262!4d-91.5099749">Address: 501 Water St #5632, Eau Claire, WI 54703</a></p>
+				<ul>
+					<li>Located on Water Street</li>
+					<li>Take out, can order online</li>
+					<li>3.5 out of 5 stars</li>
+				</ul>
 			</div>
 
 		</div>
+	</div>
+</div>
 
-	</body>
-</html>
-
-
+{% endblock %}

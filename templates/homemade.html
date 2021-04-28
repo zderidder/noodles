@@ -1,91 +1,51 @@
-<!doctype html>
-<html lang="en">
-	<head>
+{% extends "common.html" %}
 
-		<meta charset="UTF-8">
-		<title>Homemade</title>
-		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'recipe_style.css')}}"/>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'recipe_style.css')}}"/>
+{% endblock %}
 
-	</head>
-	<body>
-
-		<div id="header">
-			<h1 id="welcome">NoodlEau-Claire: All you need to know about noodles in Eau Claire!</h1>
+{% block body %}
+<div id="content">
+	<h1 class="top_text">Making noodles at home</h1>
+	<div class="topic">
+		<h2>Making The Noodles Themselves</h2>
+		<p>It is worth noting that making noodles can be a difficult task, especially depending on the type of noodles and the equipment they require.
+		 However, if you do want to try making some yourself, <i>the Spruce Eats</i> has a simple recipe for egg noodles.</p>
+	</div>
+	<div class="recipe_container">
+		<h2 class="recipe_header">Egg Noodles</h2>
+		<div class="recipe_block">
+			<h2>Notes:</h2>
+			<p>You can find the recipe <a href="https://www.thespruceeats.com/homemade-egg-noodles-2215807" target="_blank">here</a>.</p>
+			<p><b>This recipe, as you might expect, contains eggs.</b></p>
 		</div>
-
-		<div id="navbar">
-			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
-			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
-			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
-			<a class="navbar_link" href="{{url_for('history')}}">History</a>
-			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
+		<div class="recipe_block">
+			<h2>Information:</h2>
+			<p>This is a somewhat simple recipe for some simple egg noodles. It takes a total of <b>70 minutes</b> to make, and it gives <b>4 servings</b>.</p>
+			<p>These noodles can be used in a variety of dishes such as soups, stews, or pasta. If you replace dried noodles with these fresh ones, they should be cooked for less time.</p>
 		</div>
-
-		<div id="page_welcome">
-			<img id="page_welcome_image" src="https://cdn.ucdintegrativemedicine.com/uploads/GarlicTomatoSpaghetti_wp-header.jpg" alt="A bowl of spaghetti on a wooden table.">
-			<div id="page_welcome_text">
-				<h1 id="page_welcome_header">NoodlEau-Claire</h1>
-				<h2 id="page_welcome_subheader">Eau-Claire's noodles</h2>
-			</div>
+		<div class="recipe_block">
+			<h2>Ingredients:</h2>
+			<p><b>1</b> cup all-purpose flour</p>
+			<p><b>1/2</b> teaspoon fine sea salt</p>
+			<p><b>2</b> large eggs</p>
 		</div>
+	</div>
+	<div class="topic" id="soup">
+		<h2>Soup Noodles</h2>
+		<p>A common way to eat noodles is boiled into a soup. The most common types of soup noodles (at least in Wisconsin) are ramen noodles and chicken noodle soup.</p>
+		<p><a href="{{url_for('soup')}}">See our recipes here!</a></p>
+	</div>
+	<div class="topic" id="fried">
+		<h2>Fried Noodles</h2>
+		<p>Another common way to eat noodles is to fry them. These noodles can be fried lightly, or completely deep fried for vastly different textures and styles.</p>
+		<p><a href="{{url_for('fried')}}">See our recipes here!</a></p>
+	</div>
+	<div class="topic" id="pasta">
+		<h2>Pasta Noodles</h2>
+		<p>Pasta noodles are less of a method than they are a regional style, but this is centered around pasta noodles in sauce - our third way to enjoy noodles! Different combinations of shapes, sauces, and toppings can be used for various styles.</p>
+		<p><a href="{{url_for('pasta')}}">See our recipes here!</a></p>
+	</div>
+</div>
 
-		<div id="content">
-			<h1 class="top_text">Making noodles at home</h1>
-			<div class="topic">
-				<h2>Making The Noodles Themselves</h2>
-				<p>It is worth noting that making noodles can be a difficult task, especially depending on the type of noodles and the equipment they require.
-				 However, if you do want to try making some yourself, <i>the Spruce Eats</i> has a simple recipe for egg noodles.</p>
-			</div>
-			<div class="recipe_container">
-				<h2 class="recipe_header">Egg Noodles</h2>
-				<div class="recipe_block">
-					<h2>Notes:</h2>
-					<p>You can find the recipe <a href="https://www.thespruceeats.com/homemade-egg-noodles-2215807" target="_blank">here</a>.</p>
-					<p><b>This recipe, as you might expect, contains eggs.</b></p>
-				</div>
-				<div class="recipe_block">
-					<h2>Information:</h2>
-					<p>This is a somewhat simple recipe for some simple egg noodles. It takes a total of <b>70 minutes</b> to make, and it gives <b>4 servings</b>.</p>
-					<p>These noodles can be used in a variety of dishes such as soups, stews, or pasta. If you replace dried noodles with these fresh ones, they should be cooked for less time.</p>
-				</div>
-				<div class="recipe_block">
-					<h2>Ingredients:</h2>
-					<p><b>1</b> cup all-purpose flour</p>
-					<p><b>1/2</b> teaspoon fine sea salt</p>
-					<p><b>2</b> large eggs</p>
-				</div>
-			</div>
-			<div class="topic" id="soup">
-				<h2>Soup Noodles</h2>
-				<p>A common way to eat noodles is boiled into a soup. The most common types of soup noodles (at least in Wisconsin) are ramen noodles and chicken noodle soup.</p>
-				<p><a href="{{url_for('soup')}}">See our recipes here!</a></p>
-			</div>
-			<div class="topic" id="fried">
-				<h2>Fried Noodles</h2>
-				<p>Another common way to eat noodles is to fry them. These noodles can be fried lightly, or completely deep fried for vastly different textures and styles.</p>
-				<p><a href="{{url_for('fried')}}">See our recipes here!</a></p>
-			</div>
-			<div class="topic" id="pasta">
-				<h2>Pasta Noodles</h2>
-				<p>Pasta noodles are less of a method than they are a regional style, but this is centered around pasta noodles in sauce - our third way to enjoy noodles! Different combinations of shapes, sauces, and toppings can be used for various styles.</p>
-				<p><a href="{{url_for('pasta')}}">See our recipes here!</a></p>
-			</div>
-		</div>
-
-		<div id="footer">
-			<p>A website made by Connor and Zach for a CS 268 Project</p>
-			<p id="validated">
-				<a href="http://jigsaw.w3.org/css-validator/check/referer">
-				<img style="border:0;width:88px;height:31px"
-				src="http://jigsaw.w3.org/css-validator/images/vcss"
-				alt="Valid CSS!" />
-				</a>
-			</p>
-		</div>
-
-	</body>
-</html>
-
-
+{% endblock %}
