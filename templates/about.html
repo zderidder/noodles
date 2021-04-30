@@ -1,68 +1,28 @@
-<!doctype html>
-<html lang="en">
-	<head>
+{% extends "common.html" %}
 
-		<meta charset="UTF-8">
-		<title>About Us</title>
-		<link rel="shortcut icon" type="image/jpg" href="https://flyclipart.com/thumb2/chinese-noodles-royalty-free-vector-clip-art-illustration-87670.png"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}"/>
+{% block aboutId %}id="current_link"{% endblock %}
 
-	</head>
-	<body>
-
-		<div id="header">
-			<h1 id="welcome">NoodlEau-Claire: All you need to know about noodles in Eau Claire!</h1>
-		</div>
-
-		<div id="navbar">
-			<a class="navbar_link" id="current_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
-			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
-			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
-			<a class="navbar_link" href="{{url_for('history')}}">History</a>
-			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
-		</div>
-
-		<div id="page_welcome">
-			<img id="page_welcome_image" src="https://cdn.ucdintegrativemedicine.com/uploads/GarlicTomatoSpaghetti_wp-header.jpg" alt="A bowl of spaghetti on a wooden table.">
-			<div id="page_welcome_text">
-				<h1 id="page_welcome_header">NoodlEau-Claire</h1>
-				<h2 id="page_welcome_subheader">Eau-Claire's noodles</h2>
-			</div>
-		</div>
-
-		<div id="content">
-			<div class="topic">
-				<h2>Who are we?</h2>
-				<p>We are two students from Dr. Gomes' 268 Web Development course. We wanted to make a website for people who want to eat or cook noodles in Eau Claire, or for anybody who wanted to learn more about the history of noodles.</p>
-			</div>
-			<div class="topic">
-				<h2>Why noodles?</h2>
-				<p>As most noodles are just a combination of something like flour and water, they are usually very inexpensive and simple dishes (although toppings and sides can add complexity and cost). A basic noodle dish is not only cost effective and tasty, but there are plenty of different styles with different flavors and textures.</p>
-			</div>
-			<div class="topic">
-				<h2>Connor</h2>
-				<p>I am a CS major with good experience in Physics. Although I like most types of noodles, the only kind I am able to make here is a bowl of ramen with fried chilli paste, seasonings, and occasionally green onion.</p>
-			</div>
-			<div class="topic">
-				<h2>Zach</h2>
-				<p>I am also a CS major. I enjoy eating pasta and different types of noodles, particularly spaghetti with meatballs and ramen noodles. I also wanted to learn some more about Eau Claire restaurants that offered noodles, which gave us some passion for this site.</p>
-			</div>
-			<div class="topic">
-				<h2>Have a question, comment, or want to report an issue?</h2>
-				<p><a href="{{url_for('contactus')}}">click here!</a></p>
-			</div>
-		</div>
-
-		<div id="footer">
-			<p>A website made by Connor and Zach for a CS 268 Project</p>
-			<p id="validated">
-				<a href="http://jigsaw.w3.org/css-validator/check/referer">
-				<img style="border:0;width:88px;height:31px"
-				src="http://jigsaw.w3.org/css-validator/images/vcss"
-				alt="Valid CSS!" />
-				</a>
-			</p>
-		</div>
-
-	</body>
-</html>
+{% block body %}
+<div id="content">
+	<div class="topic">
+		<h2>Who are we?</h2>
+		<p>We are two students from Dr. Gomes' 268 Web Development course. We wanted to make a website for people who want to eat or cook noodles in Eau Claire, or for anybody who wanted to learn more about the history of noodles.</p>
+	</div>
+	<div class="topic">
+		<h2>Why noodles?</h2>
+		<p>As most noodles are just a combination of something like flour and water, they are usually very inexpensive and simple dishes (although toppings and sides can add complexity and cost). A basic noodle dish is not only cost effective and tasty, but there are plenty of different styles with different flavors and textures.</p>
+	</div>
+	<div class="topic">
+		<h2>Connor</h2>
+		<p>I am a CS major with good experience in Physics. Although I like most types of noodles, the only kind I am able to make here is a bowl of ramen with fried chilli paste, seasonings, and occasionally green onion.</p>
+	</div>
+	<div class="topic">
+		<h2>Zach</h2>
+		<p>I am also a CS major. I enjoy eating pasta and different types of noodles, particularly spaghetti with meatballs and ramen noodles. I also wanted to learn some more about Eau Claire restaurants that offered noodles, which gave us some passion for this site.</p>
+	</div>
+	<div class="topic">
+		<h2>Have a question, comment, or want to report an issue?</h2>
+		<p><a href="{{url_for('contactus')}}">click here!</a></p>
+	</div>
+</div>
+{% endblock %}

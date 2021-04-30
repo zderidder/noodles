@@ -14,11 +14,11 @@
 		</div>
 
 		<div id="navbar">
-			<a class="navbar_link" style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
-			<a class="navbar_link" href="{{url_for('restaurants')}}">Restaurants</a>
-			<a class="navbar_link" href="{{url_for('homemade')}}">Homemade</a>
-			<a class="navbar_link" href="{{url_for('history')}}">History</a>
-			<a class="navbar_link" href="{{url_for('aboutus')}}">About</a>
+			<a class="navbar_link" {% block indexId %}{% endblock %} style="margin-left:0px;" href="{{url_for('index')}}">Home</a>
+			<a class="navbar_link" {% block restId %}{% endblock %} href="{{url_for('restaurants')}}">Restaurants</a>
+			<a class="navbar_link" {% block homemadeId %}{% endblock %} href="{{url_for('homemade')}}">Homemade</a>
+			<a class="navbar_link" {% block historyId %}{% endblock %} href="{{url_for('history')}}">History</a>
+			<a class="navbar_link" {% block aboutId %}{% endblock %} href="{{url_for('aboutus')}}">About</a>
 		</div>
 
 		<div id="page_welcome">
