@@ -34,7 +34,7 @@ p {
 
 #navbar{
 	display:grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	background-color:gray;
 	margin:0;
 	position:sticky;
