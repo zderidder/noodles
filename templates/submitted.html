@@ -1,0 +1,21 @@
+{% extends "common.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'submitted_style.css')}}"/>
+{% endblock %}
+
+{% block body %}
+
+<h1 style="color:white;">We are looking for your input!</h1>
+<div id="eyes">
+  <div id="eye">
+    <div id="whites"></div>
+    <div id="div1"></div>
+  </div>
+  <div id="eye">
+    <div id="whites"></div>
+    <div id="div1"></div>
+  </div>
+</div>
+
+{% endblock %}
