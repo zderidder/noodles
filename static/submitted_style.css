@@ -1,24 +1,34 @@
+body > * {
+    text-align: center;
+}
+
+#content {
+    margin: auto;
+}
+
 #eyes {
     display:flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom:100px;
 }
 
-#eye {
+.eye {
 	display: grid;
     grid-template-columns: 1fr;
 }
 
-#whites {
+.whites {
 	background-color: white;
-    width:200px;
+    width:180px;
     height:250px;
     border-radius:120px;
     grid-area: 1 / 1;
 }
 
-#div1 {
-    width: 100px;
-    height: 100px;
+.pupil {
+    width: 90px;
+    height: 90px;
     background-color: black;
     border-radius: 90px;
     position: relative;
@@ -30,8 +40,8 @@
 
 @keyframes animation {
     0%   {left:30px;}
-    25%  {left:70px;}
-    50%  {left:70px;}
+    25%  {left:60px;}
+    50%  {left:60px;}
     75%  {left:30px;}
     100% {left:30px;}
 }

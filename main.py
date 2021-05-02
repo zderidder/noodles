@@ -3,6 +3,7 @@ from forms import FunFactForm
 import sqlite3 as sql
 
 app = Flask(__name__)
+app.secret_key = 'developer_key'
 
 @app.route("/")
 def index():
@@ -43,8 +44,9 @@ def soup():
 @app.route("/fun-facts", methods = ['GET', 'POST'])
 def funfacts():
 
-    form = FunFactForm()
+    form = FunFactForm(request.form)
     msg = ""
+    print(form.validate())
     if request.method == 'POST':
         try:
             name = request.form['name']

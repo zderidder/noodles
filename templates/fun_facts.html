@@ -1,14 +1,35 @@
 {% extends "common.html" %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'fun_facts_style.css')}}"/>
+{% endblock %}
+
 {% block body %}
 <div id="content">
 	<h1 class="top_text">Fun noodle facts!</h1>
 	<div class="topic">
 		<h2>Random Fact!</h2>
 		{% for row in fact %}
-			<p>{{ row["fact"] }}</p>
+			<p>Did you know? <b>{{ row["fact"] }}</b></p>
+			<p style="padding-left: 20px;">Submitted by {{ row["name"] }}</p>
 		{% endfor %}
 	</div>
+	<div class="topic">
+		<h2>Add a fun fact!</h2>
+		<p>Please send in a fun fact that you found! Go wild! It doesn't have to be noodles just fill that database if you want!</p>
+		<form action="{{ url_for('funfacts') }}" method="POST">
+			<div>
+				<input type="text" name="name" placeholder="name" />
+			</div>
+			<div>
+				<input type="text" name="fact" placeholder="fun fact"/>
+			</div>
+			<div>
+				<input type="submit" name="submit" class="form_button"/>
+			</div>
+		</form>
+	</div>
+	<h1 class="top_text">Our fun facts</h1>
 	<div class="topic">
 		<h2>The word noodle</h2>
 		<p>The word noodle derives from the German word nudel, which means "dumpling" in German.</p>
@@ -28,17 +49,6 @@
 	<div class="topic">
 		<h2>Noodle etiquette</h2>
 		<p>In Japan, slurping your noodles is actually not seen in poor taste. It means that you were thoroughly enjoying your appreciation for the host and the deliciousness of the meal.</p>
-	</div>
-	<div class="topic">
-		<h2>Add a fun fact!</h2>
-		<p>Please send in a fun fact that you found! Go wild! It doesn't have to be noodles just fill that database if you want!</p>
-		<form action="{{ url_for('funfacts') }}" method="POST">
-			<h2>Name</h2>
-			<input type="text" name="name" /><br/>
-			<h2>Fun Fact</h2>
-			<input type="text" name="fact" /><br/>
-			<input type="submit" name="submit" />
-		</form>
 	</div>
 </div>
 

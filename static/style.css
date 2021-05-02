@@ -19,7 +19,7 @@
 	margin-left:40px;
 }
 
-.topic > p, .subtopic > p {
+.topic > p, .subtopic > p, .topic > form > input {
 	margin-left:20px;
 }
 

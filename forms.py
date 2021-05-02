@@ -1,8 +1,9 @@
 from flask_wtf import Form
 from wtforms import StringField, IntegerField, TextAreaField, SubmitField
-from wtforms import RadioField, validators
+from wtforms import RadioField, SelectField, validators
 
-class ContactForm():
+
+class ContactForm(Form):
     name = StringField("Name of the student", [validators.DataRequired(
         "Please enter your name")])
 
@@ -18,9 +19,10 @@ class ContactForm():
 
     submit = SubmitField("Send")
 
-class FunFactForm():
-    name = StringField("Enter your name", [validators.DataRequired("Please enter your name")])
-    fact = StringField("Enter your fun fact", [validators.DataRequired("What's the point if you don't have a fact?")])
+
+class FunFactForm(Form):
+    name = StringField("name", [validators.DataRequired()])
+    fact = StringField("fun fact", [validators.DataRequired()])
 
     submit = SubmitField("Send")
 
