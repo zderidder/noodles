@@ -43,34 +43,34 @@ def soup():
 @app.route("/fun-facts", methods = ['GET', 'POST'])
 def funfacts():
 
-    con = sql.connect("fun_facts_database.db")
-    con.row_factory = sql.Row
-
-    cur = con.cursor()
-    cur.execute("select * from facts")
-
-    fact = cur.fetchall()
-    return render_template("fun_facts.html", fact = fact)
-
     form = FunFactForm()
     msg = ""
-    if request.method != 'POST':
-        return render_template('fun_facts.html', form=form)
-    else:
+    if request.method == 'POST':
         try:
             name = request.form['name']
             fact = request.form['fact']
             with sql.connect("fun_facts_database.db") as con:
                 cur = con.cursor()
-                cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)",(name, fact))
+                cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
                 con.commit()
                 msg = "Record successfully added"
         except:
             con.rollback()
             msg = "Error in insert"
         finally:
-            return render_template("submitted.html", msg = msg)
+            return render_template("submitted.html")
             con.close()
+
+    con = sql.connect("fun_facts_database.db")
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute("select * FROM facts ORDER BY RANDOM() LIMIT 1")
+
+    fact = cur.fetchall()
+    return render_template("fun_facts.html", fact = fact)
+
+    con.close()
 
 
 if __name__=='__main__':
