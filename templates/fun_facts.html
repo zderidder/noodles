@@ -4,6 +4,12 @@
 <div id="content">
 	<h1 class="top_text">Fun noodle facts!</h1>
 	<div class="topic">
+		<h2>Random Fact!</h2>
+		{% for row in fact %}
+			<p>{{ row["fact"] }}</p>
+		{% endfor %}
+	</div>
+	<div class="topic">
 		<h2>The word noodle</h2>
 		<p>The word noodle derives from the German word nudel, which means "dumpling" in German.</p>
 	</div>
@@ -25,9 +31,13 @@
 	</div>
 	<div class="topic">
 		<h2>Add a fun fact!</h2>
-		<p>Please send in a fun fact that you found!</p>
-		<form>
-
+		<p>Please send in a fun fact that you found! Go wild! It doesn't have to be noodles just fill that database if you want!</p>
+		<form action="{{ url_for('funfacts') }}" method="POST">
+			<h2>Name</h2>
+			<input type="text" name="name" /><br/>
+			<h2>Fun Fact</h2>
+			<input type="text" name="fact" /><br/>
+			<input type="submit" name="submit" />
 		</form>
 	</div>
 </div>

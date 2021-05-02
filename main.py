@@ -43,19 +43,18 @@ def soup():
 @app.route("/fun-facts", methods = ['GET', 'POST'])
 def funfacts():
 
-    #con = sql.connect("database.db")
-    #con.row_factory = sql.Row
+    con = sql.connect("fun_facts_database.db")
+    con.row_factory = sql.Row
 
-    #cur = con.cursor()
-    #cur.execute("select * from facts")
+    cur = con.cursor()
+    cur.execute("select * from facts")
 
-    #rows = cur.fetchall()
-    #return render_template("fun_facts.html", rows = rows)
+    fact = cur.fetchall()
+    return render_template("fun_facts.html", fact = fact)
 
     form = FunFactForm()
     msg = ""
-    if request.method == 'POST':
-        flash('All fields are required')
+    if request.method != 'POST':
         return render_template('fun_facts.html', form=form)
     else:
         try:
