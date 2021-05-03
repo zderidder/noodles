@@ -1,28 +1,22 @@
 from flask_wtf import Form
-from wtforms import StringField, IntegerField, TextAreaField, SubmitField
+from wtforms import StringField, TextAreaField, SubmitField
 from wtforms import RadioField, SelectField, validators
 
+class ContactUs(Form):
+    name = StringField("name")
 
-class ContactForm(Form):
-    name = StringField("Name of the student", [validators.DataRequired(
-        "Please enter your name")])
+    email = StringField("email")
 
-    gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female'),
-                                           ('O', 'Others')], default='O')
+    problem = SelectField("problem")
 
-    address = StringField("Address of the student", [validators.DataRequired(
-        "Please enter your address")])
-
-    email = StringField("Email of the student", [validators.DataRequired(
-        "Please enter your email"), validators.Email
-        ("Please enter your email")])
+    description = TextAreaField("description")
 
     submit = SubmitField("Send")
 
 
 class FunFactForm(Form):
-    name = StringField("name", [validators.DataRequired()])
-    fact = StringField("fun fact", [validators.DataRequired()])
+    name = StringField("name")
+    fact = StringField("fun fact")
 
     submit = SubmitField("Send")
 
