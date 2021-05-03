@@ -37,37 +37,34 @@ def pasta():
     return render_template("pasta.html")
 
 
-@app.route("/restaurants")
+@app.route("/restaurants", methods=['GET', 'POST'])
 def restaurants(invalid=None):
     form = RestaurantForm(request.form)
     print(form.validate())
 
-    con = sql.connect("fun_facts_database.db")
+    con = sql.connect("restaurant_database.db")
     con.row_factory = sql.Row
 
     if request.method == 'POST':
         try:
-            name = request.form['name'].strip()
-            fact = request.form['fact'].strip()
+            email = request.form['email'].strip()
+            restaurant = request.form['restaurant'].strip()
+            address = request.form['address'].strip()
 
-            if len(fact) != 0 and len(name) != 0:
-                with sql.connect("fun_facts_database.db") as con:
+            if len(email) != 0 and len(restaurant) != 0 and len(address) != 0:
+                with sql.connect("restaurant_database.db") as con:
                     cur = con.cursor()
-                    cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
+                    cur.execute("INSERT INTO restaurants(email, name, location) VALUES (?,?, ?)", (email, restaurant, address))
                     con.commit()
                     return render_template("submitted.html")
             else:
-                return render_template("fun_facts.html", invalid=True)
+                print("Fuck off")
         except:
             con.rollback()
         finally:
             con.close()
 
-    cur = con.cursor()
-    cur.execute("select * FROM facts ORDER BY RANDOM() LIMIT 1")
-
-    fact = cur.fetchall()
-    return render_template("fun_facts.html", fact=fact)
+    return render_template("restaurants.html")
 
 
 @app.route("/soup")

@@ -11,7 +11,7 @@ print("Table created successfully")
 conn = sqlite3.connect('restaurant_database.db')
 print("opened database successfully")
 #conn.execute('Drop TABLE facts')
-conn.execute('CREATE TABLE restaurants (email TEXT, name TEXT, location TEXT);')
+conn.execute('CREATE TABLE restaurants (email TEXT, restaurant TEXT, address TEXT);')
 print("Table created successfully")
 
 conn.close()
