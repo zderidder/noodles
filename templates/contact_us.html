@@ -9,16 +9,22 @@
 	<div id="description">
 		<h1>Have a question? Notice any errors? Let us know!</h1>
 		<p>This website isn't finished, so let us know how to make it better!</p>
+		{% if invalid %}
+		<h4>One of your fields was invalid. Input was not added to the database.</h4>
+		{% endif %}
+		{% if successful %}
+		<h4>Thank you for your input!</h4>
+		{% endif %}
 	</div>
-	<form>
+	<form action="{{ url_for('contactus') }}" method="POST">
 		<div>
 			<input type="text" name="name" placeholder="Name" />
 		</div>
 		<div>
-			<input type="text" name="phonenumber" placeholder="Phone number" />
+			<input type="text" name="email" placeholder="Email" />
 		</div>
 		<div>
-			<select>
+			<select name="problem">
 				<option value="" disabled selected hidden>What is the problem?</option>
 				<option value="question">Question</option>
 				<option value="bug">Report a bug</option>
@@ -26,7 +32,7 @@
 			</select>
 		</div>
 		<div>
-			<textarea id="explaination" placeholder="Give a short description of the problem."></textarea>
+			<textarea id="explaination" name="description" placeholder="Give a short description of the problem."></textarea>
 		</div>
 		<div>
 			<input class="form_button" type="submit" name="submit" value="Submit">

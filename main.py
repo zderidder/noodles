@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from forms import FunFactForm
+from forms import FunFactForm, ContactUs
 import sqlite3 as sql
 
 app = Flask(__name__)
@@ -14,11 +14,6 @@ def index():
 @app.route("/about-us")
 def aboutus():
     return render_template("about.html")
-
-
-@app.route("/contact-us")
-def contactus():
-    return render_template("contact_us.html")
 
 
 @app.route("/fried")
@@ -50,6 +45,40 @@ def restaurants():
 def soup():
     return render_template("soup.html")
 
+
+@app.route("/contact-us", methods=['GET', 'POST'])
+def contactus(invalid=False):
+    form = ContactUs(request.form)
+    print(form.validate())
+    msg = ""
+
+    con = sql.connect("fun_facts_database.db")
+    con.row_factory = sql.Row
+
+    if request.method == 'POST':
+        try:
+            name = request.form['name'].strip()
+            email = request.form['email'].strip()
+            problem = request.form['problem'].strip()
+            description = request.form['description'].strip()
+
+            if len(email) != 0 and len(name) != 0 and len(problem) != 0 and len(description) != 0:
+                with sql.connect("fun_facts_database.db") as con:
+                    cur = con.cursor()
+                    cur.execute("INSERT INTO contact(name, email, problem, description) VALUES (?,?,?,?)", (name, email, problem, description))
+                    con.commit()
+                    msg = "Record successfully added"
+            else:
+                return render_template("contact_us.html", invalid=True, successful=False)
+        except:
+            con.rollback()
+            msg = "Error in insert"
+            return render_template("contact_us.html", invalid=True, successful=False)
+        finally:
+            con.close()
+            return render_template("contact_us.html", invalid=False, successful=True)
+    con.close()
+    return render_template("contact_us.html", invalid=False, successful=False)
 
 @app.route("/fun-facts", methods=['GET', 'POST'])
 def funfacts(invalid=None):
