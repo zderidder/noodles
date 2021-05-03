@@ -20,4 +20,10 @@ class FunFactForm(Form):
 
     submit = SubmitField("Send")
 
+class RestaurantForm(Form):
+    email = StringField("email")
+    restaurant = StringField("restaurant")
+    address = StringField("address")
+    submit = SubmitField("Send")
+
 

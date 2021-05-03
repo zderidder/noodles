@@ -1,5 +1,6 @@
+from email_validator import validate_email
 from flask import Flask, render_template, request
-from forms import FunFactForm
+from forms import FunFactForm, ContactUs, RestaurantForm
 import sqlite3 as sql
 
 app = Flask(__name__)
@@ -42,8 +43,36 @@ def pasta():
 
 
 @app.route("/restaurants")
-def restaurants():
-    return render_template("restaurants.html")
+def restaurants(invalid=None):
+    form = RestaurantForm(request.form)
+    print(form.validate())
+
+    con = sql.connect("fun_facts_database.db")
+    con.row_factory = sql.Row
+
+    if request.method == 'POST':
+        try:
+            name = request.form['name'].strip()
+            fact = request.form['fact'].strip()
+
+            if len(fact) != 0 and len(name) != 0:
+                with sql.connect("fun_facts_database.db") as con:
+                    cur = con.cursor()
+                    cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
+                    con.commit()
+                    return render_template("submitted.html")
+            else:
+                return render_template("fun_facts.html", invalid=True)
+        except:
+            con.rollback()
+        finally:
+            con.close()
+
+    cur = con.cursor()
+    cur.execute("select * FROM facts ORDER BY RANDOM() LIMIT 1")
+
+    fact = cur.fetchall()
+    return render_template("fun_facts.html", fact=fact)
 
 
 @app.route("/soup")
@@ -85,7 +114,6 @@ def funfacts(invalid=None):
 
     fact = cur.fetchall()
     return render_template("fun_facts.html", fact=fact)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
