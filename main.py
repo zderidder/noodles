@@ -44,17 +44,17 @@ def homemade(invalid=None):
             if len(email) != 0 and len(recipe) != 0 and len(link) != 0:
                 with sql.connect("database.db") as con:
                     cur = con.cursor()
-                    cur.execute("INSERT INTO recipes(email, name, location) VALUES (?,?,?)", (email, recipe, link))
+                    cur.execute("INSERT INTO recipes(email, recipe, link) VALUES (?,?,?)",
+                                (email, recipe, link))
                     con.commit()
-                    return render_template("submitted.html", link=url_for("homemade"), location="homemade")
+                return render_template("submitted.html", link=url_for("homemade"), location="homemade")
             else:
-                print("Not added")
                 return render_template("homemade.html", invalid=True)
         except:
             con.rollback()
+            return render_template("homemade.html", invalid=True)
     con.close()
-
-    return render_template("homemade.html")
+    return render_template("homemade.html", invalid=False)
 
 
 @app.route("/pasta")
@@ -79,7 +79,7 @@ def restaurants(invalid=None):
             if len(email) != 0 and len(restaurant) != 0 and len(address) != 0:
                 with sql.connect("database.db") as con:
                     cur = con.cursor()
-                    cur.execute("INSERT INTO restaurants(email, name, location) VALUES (?,?, ?)", (email, restaurant, address))
+                    cur.execute("INSERT INTO restaurants(email, restaurant, address) VALUES (?,?, ?)", (email, restaurant, address))
                     con.commit()
                     return render_template("submitted.html", link=url_for("restaurants"), location="restaurants")
             else:
@@ -113,16 +113,11 @@ def contactus(invalid=False):
             problem = request.form['problem'].strip()
             description = request.form['description'].strip()
 
-            print(email)
-            print(name)
-            print(problem)
-            print(description)
             if len(email) != 0 and len(name) != 0 and len(problem) != 0 and len(description) != 0:
                 with sql.connect("database.db") as con:
                     cur = con.cursor()
                     cur.execute("INSERT INTO contact(name, email, problem, description) VALUES (?,?,?,?)", (name, email, problem, description))
                     con.commit()
-                print("HERE")
                 return render_template("submitted.html", link=url_for("contactus"), location="contact us")
         except:
             con.rollback()
@@ -134,7 +129,6 @@ def contactus(invalid=False):
 def funfacts(invalid=None):
     form = FunFactForm(request.form)
     print(form.validate())
-    msg = ""
 
     con = sql.connect("database.db")
     con.row_factory = sql.Row
@@ -149,13 +143,11 @@ def funfacts(invalid=None):
                     cur = con.cursor()
                     cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
                     con.commit()
-                    msg = "Record successfully added"
                     return render_template("submitted.html", link=url_for("funfacts"), location="fun facts")
             else:
                 return render_template("fun_facts.html", invalid=True)
         except:
             con.rollback()
-            msg = "Error in insert"
 
     cur = con.cursor()
     cur.execute("select * FROM facts ORDER BY RANDOM() LIMIT 1")

@@ -60,22 +60,21 @@
 		</div>
 		<h1 style="text-align: center;">Send us the name of a restaurant you like and its address/website! If we like we may put it on our list</h1>
 		<form action="{{ url_for('restaurants') }}" method="POST">
-				<div>
-					<input type="text" name="email" placeholder="Your email"/>
-				</div>
-				<div>
-					<input type="text" name="name" placeholder="Name of restaurant"/>
-				</div>
-				<div>
-					<input type="text" name="fact" placeholder="Address/website"/>
-				</div>
-				<div>
-					<input type="submit" name="submit" class="form_button"/>
-				</div>
-				<br>
-				{% if invalid %}
-				<h4 style="margin:0">One of your fields was blank. Input was not added to the database.</h4>
-				{% endif %}
+			<div>
+				<input type="text" name="email" placeholder="Your email"/>
+			</div>
+			<div>
+				<input type="text" name="restaurant" placeholder="Recipe name"/>
+			</div>
+			<div>
+				<input type="text" name="address" placeholder="Link to recipe"/>
+			</div>
+			<div>
+				<input type="submit" name="submit" class="form_button"/>
+			</div>
+			{% if invalid %}
+			<h4 style="margin:0">One of your fields was blank. Input was not added to the database.</h4>
+			{% endif %}
 		</form>
 	</div>
 </div>
