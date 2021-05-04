@@ -52,8 +52,7 @@ def homemade(invalid=None):
                 return render_template("homemade.html", invalid=True)
         except:
             con.rollback()
-        finally:
-            con.close()
+    con.close()
 
     return render_template("homemade.html")
 
@@ -82,14 +81,14 @@ def restaurants(invalid=None):
                     cur = con.cursor()
                     cur.execute("INSERT INTO restaurants(email, name, location) VALUES (?,?, ?)", (email, restaurant, address))
                     con.commit()
-                    return render_template("restaurants.html")
+                    return render_template("submitted.html")
             else:
                 print("Not added")
                 return render_template("restaurants.html", invalid=True)
         except:
             con.rollback()
-        finally:
-            con.close()
+
+    con.close()
 
     return render_template("restaurants.html")
 
@@ -128,7 +127,6 @@ def contactus(invalid=False):
             msg = "Error in insert"
             return render_template("contact_us.html", invalid=True, successful=False)
         finally:
-            con.close()
             return render_template("contact_us.html", invalid=False, successful=True)
     con.close()
     return render_template("contact_us.html", invalid=False, successful=False)
@@ -159,13 +157,14 @@ def funfacts(invalid=None):
         except:
             con.rollback()
             msg = "Error in insert"
-        finally:
-            con.close()
 
     cur = con.cursor()
     cur.execute("select * FROM facts ORDER BY RANDOM() LIMIT 1")
 
     fact = cur.fetchall()
+
+    con.close()
+
     return render_template("fun_facts.html", fact=fact)
 
 if __name__ == '__main__':
