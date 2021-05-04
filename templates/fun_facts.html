@@ -6,7 +6,7 @@
 
 {% block body %}
 <div id="content">
-	<h1 class="top_text">Fun noodle facts!</h1>
+	<h1 class="top_text">Submitted noodle facts!</h1>
 	<div class="topic">
 		<h2>Random Fact!</h2>
 		{% for row in fact %}
@@ -29,7 +29,7 @@
 			</div>
 			<br>
 			{% if invalid %}
-			<h4>One of your fields was blank. Input was not added to the database.</h4>
+			<h4 style="margin:0">One of your fields was blank. Input was not added to the database.</h4>
 			{% endif %}
 		</form>
 	</div>

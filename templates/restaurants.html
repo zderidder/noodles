@@ -58,7 +58,7 @@
 				</ul>
 			</div>
 		</div>
-		<h1>Send us the name of a restaurant you like and its address/website! If we like we may put it on our list</h1>
+		<h1 style="text-align: center;">Send us the name of a restaurant you like and its address/website! If we like we may put it on our list</h1>
 		<form action="{{ url_for('restaurants') }}" method="POST">
 				<div>
 					<input type="text" name="email" placeholder="Your email"/>
@@ -74,7 +74,7 @@
 				</div>
 				<br>
 				{% if invalid %}
-				<h4>One of your fields was blank. Input was not added to the database.</h4>
+				<h4 style="margin:0">One of your fields was blank. Input was not added to the database.</h4>
 				{% endif %}
 		</form>
 	</div>

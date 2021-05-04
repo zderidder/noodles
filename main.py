@@ -1,5 +1,5 @@
 from email_validator import validate_email
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from forms import FunFactForm, ContactUs, RestaurantForm, HomemadeForm
 import sqlite3 as sql
 
@@ -102,7 +102,6 @@ def soup():
 def contactus(invalid=False):
     form = ContactUs(request.form)
     print(form.validate())
-    msg = ""
 
     con = sql.connect("database.db")
     con.row_factory = sql.Row
@@ -114,22 +113,22 @@ def contactus(invalid=False):
             problem = request.form['problem'].strip()
             description = request.form['description'].strip()
 
+            print(email)
+            print(name)
+            print(problem)
+            print(description)
             if len(email) != 0 and len(name) != 0 and len(problem) != 0 and len(description) != 0:
                 with sql.connect("database.db") as con:
                     cur = con.cursor()
                     cur.execute("INSERT INTO contact(name, email, problem, description) VALUES (?,?,?,?)", (name, email, problem, description))
                     con.commit()
-                    msg = "Record successfully added"
-            else:
-                return render_template("contact_us.html", invalid=True, successful=False)
+                print("HERE")
+                return render_template("submitted.html", link=url_for("contactus"), location="contact us")
         except:
             con.rollback()
-            msg = "Error in insert"
-            return render_template("contact_us.html", invalid=True, successful=False)
-        finally:
-            return render_template("contact_us.html", invalid=False, successful=True)
+            return render_template("contact_us.html", invalid=True)
     con.close()
-    return render_template("contact_us.html", invalid=False, successful=False)
+    return render_template("contact_us.html", invalid=False)
 
 @app.route("/fun-facts", methods=['GET', 'POST'])
 def funfacts(invalid=None):
