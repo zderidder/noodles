@@ -46,7 +46,7 @@ def homemade(invalid=None):
                     cur = con.cursor()
                     cur.execute("INSERT INTO recipes(email, name, location) VALUES (?,?,?)", (email, recipe, link))
                     con.commit()
-                    return render_template("submitted.html")
+                    return render_template("submitted.html", link=url_for("homemade"), location="homemade")
             else:
                 print("Not added")
                 return render_template("homemade.html", invalid=True)
@@ -81,7 +81,7 @@ def restaurants(invalid=None):
                     cur = con.cursor()
                     cur.execute("INSERT INTO restaurants(email, name, location) VALUES (?,?, ?)", (email, restaurant, address))
                     con.commit()
-                    return render_template("submitted.html")
+                    return render_template("submitted.html", link=url_for("restaurants"), location="restaurants")
             else:
                 print("Not added")
                 return render_template("restaurants.html", invalid=True)
@@ -150,7 +150,7 @@ def funfacts(invalid=None):
                     cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
                     con.commit()
                     msg = "Record successfully added"
-                    return render_template("submitted.html")
+                    return render_template("submitted.html", link=url_for("funfacts"), location="fun facts")
             else:
                 return render_template("fun_facts.html", invalid=True)
         except:
