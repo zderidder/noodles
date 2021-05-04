@@ -42,7 +42,7 @@ def restaurants(invalid=None):
     form = RestaurantForm(request.form)
     print(form.validate())
 
-    con = sql.connect("restaurant_database.db")
+    con = sql.connect("database.db")
     con.row_factory = sql.Row
 
     if request.method == 'POST':
@@ -52,13 +52,13 @@ def restaurants(invalid=None):
             address = request.form['address'].strip()
 
             if len(email) != 0 and len(restaurant) != 0 and len(address) != 0:
-                with sql.connect("restaurant_database.db") as con:
+                with sql.connect("database.db") as con:
                     cur = con.cursor()
                     cur.execute("INSERT INTO restaurants(email, name, location) VALUES (?,?, ?)", (email, restaurant, address))
                     con.commit()
-                    return render_template("submitted.html")
+                    return render_template("restaurants.html")
             else:
-                print("Fuck off")
+                print("Not added")
         except:
             con.rollback()
         finally:
