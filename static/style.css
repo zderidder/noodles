@@ -2,10 +2,16 @@
 	background-color: #A52A2A;
 	text-align: center;
 	font-family: Tahoma, sans-serif;
+	padding: 10px 0;
+	font-size:20px;
 }
 
 #welcome {
 	margin: 0;
+}
+
+#welcome::after {
+    content: ": All you need to know about noodles in Eau Claire!";
 }
 
 #content {
@@ -136,4 +142,10 @@ li{
 .topic a:visited{
   color: green;
   text-decoration: none;
+}
+
+@media (max-width: 700px) {
+    #welcome::after {
+        content: none;
+    }
 }
