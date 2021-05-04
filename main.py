@@ -1,6 +1,6 @@
 from email_validator import validate_email
 from flask import Flask, render_template, request
-from forms import FunFactForm, ContactUs, RestaurantForm
+from forms import FunFactForm, ContactUs, RestaurantForm, HomemadeForm
 import sqlite3 as sql
 
 app = Flask(__name__)
@@ -27,8 +27,33 @@ def history():
     return render_template("history.html")
 
 
-@app.route("/homemade")
-def homemade():
+@app.route("/homemade", methods=['GET', 'POST'])
+def homemade(invalid=None):
+    form = HomemadeForm(request.form)
+    print(form.validate())
+
+    con = sql.connect("database.db")
+    con.row_factory = sql.Row
+
+    if request.method == 'POST':
+        try:
+            email = request.form['email'].strip()
+            recipe = request.form['recipe'].strip()
+            link = request.form['link'].strip()
+
+            if len(email) != 0 and len(recipe) != 0 and len(link) != 0:
+                with sql.connect("database.db") as con:
+                    cur = con.cursor()
+                    cur.execute("INSERT INTO recipes(email, name, location) VALUES (?,?,?)", (email, recipe, link))
+                    con.commit()
+                    return render_template("submitted.html")
+            else:
+                print("Fuck off")
+        except:
+            con.rollback()
+        finally:
+            con.close()
+
     return render_template("homemade.html")
 
 

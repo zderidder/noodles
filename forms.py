@@ -27,3 +27,10 @@ class RestaurantForm(Form):
     submit = SubmitField("Send")
 
 
+class HomemadeForm(Form):
+    email = StringField("email")
+    recipe = StringField("recipe")
+    link = StringField("link")
+
+    submit = SubmitField("Send")
+
