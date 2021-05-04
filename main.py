@@ -105,7 +105,7 @@ def contactus(invalid=False):
     print(form.validate())
     msg = ""
 
-    con = sql.connect("fun_facts_database.db")
+    con = sql.connect("database.db")
     con.row_factory = sql.Row
 
     if request.method == 'POST':
@@ -116,7 +116,7 @@ def contactus(invalid=False):
             description = request.form['description'].strip()
 
             if len(email) != 0 and len(name) != 0 and len(problem) != 0 and len(description) != 0:
-                with sql.connect("fun_facts_database.db") as con:
+                with sql.connect("database.db") as con:
                     cur = con.cursor()
                     cur.execute("INSERT INTO contact(name, email, problem, description) VALUES (?,?,?,?)", (name, email, problem, description))
                     con.commit()
@@ -139,7 +139,7 @@ def funfacts(invalid=None):
     print(form.validate())
     msg = ""
 
-    con = sql.connect("fun_facts_database.db")
+    con = sql.connect("database.db")
     con.row_factory = sql.Row
 
     if request.method == 'POST':
@@ -148,7 +148,7 @@ def funfacts(invalid=None):
             fact = request.form['fact'].strip()
 
             if len(fact) != 0 and len(name) != 0:
-                with sql.connect("fun_facts_database.db") as con:
+                with sql.connect("database.db") as con:
                     cur = con.cursor()
                     cur.execute("INSERT INTO facts(name, fact) VALUES (?,?)", (name, fact))
                     con.commit()
