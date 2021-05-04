@@ -2,6 +2,7 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'recipe_style.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'form_style.css')}}"/>
 {% endblock %}
 
 {% block homemadeId %}id="current_link"{% endblock %}
@@ -48,6 +49,25 @@
 		<p>Pasta noodles are less of a method than they are a regional style, but this is centered around pasta noodles in sauce - our third way to enjoy noodles! Different combinations of shapes, sauces, and toppings can be used for various styles.</p>
 		<p><a href="{{url_for('pasta')}}">See our recipes here!</a></p>
 	</div>
+	<h1>Send us the name of a restaurant you like and its address/website! If we like we may put it on our list</h1>
+	<form action="{{ url_for('homemade') }}" method="POST">
+		<div>
+			<input type="text" name="email" placeholder="Your email"/>
+		</div>
+		<div>
+			<input type="text" name="recipe" placeholder="Recipe name"/>
+		</div>
+		<div>
+			<input type="text" name="link" placeholder="Link to recipe"/>
+		</div>
+		<div>
+			<input type="submit" name="submit" class="form_button"/>
+		</div>
+		<br>
+		{% if invalid %}
+		<h4>One of your fields was blank. Input was not added to the database.</h4>
+		{% endif %}
+	</form>
 </div>
 
 {% endblock %}
