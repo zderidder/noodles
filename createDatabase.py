@@ -5,6 +5,7 @@ print("opened database successfully")
 
 conn.execute('CREATE TABLE facts (name TEXT, fact TEXT);')
 conn.execute('INSERT INTO facts(name, fact) VALUES("Connor", "Boy do I like those crazy noodles");')
+conn.commit()
 
 conn.execute('CREATE TABLE contact (name TEXT, email TEXT, problem TEXT, description TEXT);')
 
