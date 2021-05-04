@@ -48,7 +48,8 @@ def homemade(invalid=None):
                     con.commit()
                     return render_template("submitted.html")
             else:
-                print("Fuck off")
+                print("Not added")
+                return render_template("homemade.html", invalid=True)
         except:
             con.rollback()
         finally:
@@ -84,6 +85,7 @@ def restaurants(invalid=None):
                     return render_template("restaurants.html")
             else:
                 print("Not added")
+                return render_template("restaurants.html", invalid=True)
         except:
             con.rollback()
         finally:
