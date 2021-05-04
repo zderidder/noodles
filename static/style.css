@@ -1,5 +1,5 @@
 #header {
-	background-color: #68a4ff;
+	background-color: #A52A2A;
 	text-align: center;
 	font-family: Tahoma, sans-serif;
 }
@@ -126,4 +126,14 @@ li{
 #page_welcome_subheader {
 	color: white;
 	font-size: 4vw;
+}
+
+.topic a:link{
+   color: green;
+   text-decoration: none;
+}
+
+.topic a:visited{
+  color: green;
+  text-decoration: none;
 }
