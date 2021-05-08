@@ -1,4 +1,3 @@
-from email_validator import validate_email
 from flask import Flask, render_template, request, url_for
 from forms import FunFactForm, ContactUs, RestaurantForm, HomemadeForm
 import sqlite3 as sql
